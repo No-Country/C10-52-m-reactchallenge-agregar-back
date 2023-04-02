@@ -25,7 +25,7 @@ const CarouselC = ({ ourServices }) => {
   };
 
   return (
-    <Carousel responsive={responsive} infinite={true}>
+    <Carousel className=" m-auto w-10/12" responsive={responsive} infinite={true}>
       {servicesMapping}
     </Carousel>
   );

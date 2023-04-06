@@ -1,14 +1,13 @@
 import React from "react";
-import img1 from "../../assets/img/f1.jpg"
+// import img1 from "../../../public/images/f1.jpg"
 import '../../index.css'
 
 function ContactForm() {
   return (
     <> 
-    <div className="bg-no-repeat bg-center bg-cover mx-auto flex flex-col md:flex-row justify-center py-4 px-5 bg-black relative" id="fondo"
-        style={{
-        backgroundImage: `url(${img1})`,
-        }}>
+    <div className="bg-[url(./images/header/f1.jpg)] bg-no-repeat bg-center bg-cover mx-auto flex flex-col md:flex-row justify-center py-4 px-5 bg-black relative" id="fondo"
+        
+        >
         <div className="mx-auto w-1/2 text-left " id="header">
             <h1 className="text-5xl font-bold text-white">Para Sonrisas <br />Saludables</h1>
             <h2 className="text-xl text-white">Odontología General y Estética <br />Integral</h2>

@@ -31,7 +31,7 @@ const OurServices = () => {
 
   return (
     <section>
-      <h1 className=" text-center text-6xl font-bold mt-8">
+      <h1 className=" text-center text-5xl font-bold mt-8">
         Nuestros servicios
       </h1>
       <p className="text-center text-xl">

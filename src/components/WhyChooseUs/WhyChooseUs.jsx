@@ -26,51 +26,35 @@ const WhyChooseUs = () => {
   ];
   return (
     <section className=" bg-gray-100 mt-20 flex flex-col items-center">
-      <h2 className="text-5xl font-bold pt-20 pb-8 text-center">¿Por que elegirnos?</h2>
-      <p className="m-auto text-2xl w-10/12 text-center">
+      <h2 className="text-5xl font-bold pt-20 pb-8 text-center">
+        ¿Por que elegirnos?
+      </h2>
+      <p className="m-auto text-2xl w-10/12 sm:w-6/12 text-center">
         Nosotros sabemos tus necesidades y nuestro objetivo es que salgas con
         una hermosa sonrisa
       </p>
-      <CarouselC ourSkills={ourSkills} watchMobile={1} watchTablet={3} watchDesktop={4} wSkills={'w-full'} />
-
-{/*       <div className="flex flex-col sm:flex sm:flex-row sm:justify-between w-10/12 m-auto my-14">
-        <div className="flex flex-col items-center mb-14">
-          <img className=" w-20" src="./images/whyChooseUs/heart.svg" alt="" />
-          <h3 className="text-center font-bold py-3">Professional Care</h3>
-          <p className="text-center w-60">
-            PRofesionales altamente capacitados y calificados en resolver su
-            problema dental.
-          </p>
-        </div>
-        <div className="flex flex-col items-center">
-          <img className=" w-20" src="./images/whyChooseUs/heart.svg" alt="" />
-          <h3 className="text-center font-bold py-3">Professional Care</h3>
-          <p className="text-center w-60">
-            PRofesionales altamente capacitados y calificados en resolver su
-            problema dental.
-          </p>
-        </div>
-        <div className="flex flex-col items-center">
-          <img className=" w-20" src="./images/whyChooseUs/heart.svg" alt="" />
-          <h3 className="text-center font-bold py-3">Professional Care</h3>
-          <p className="text-center w-60">
-            PRofesionales altamente capacitados y calificados en resolver su
-            problema dental.
-          </p>
-        </div>
-        <div className="flex flex-col items-center">
-          <img className=" w-20" src="./images/whyChooseUs/heart.svg" alt="" />
-          <h3 className="text-center font-bold py-3">Professional Care</h3>
-          <p className="text-center w-60">
-            PRofesionales altamente capacitados y calificados en resolver su
-            problema dental.
-          </p>
-        </div>
-      </div> */}
-
+      <CarouselC
+        ourSkills={ourSkills}
+        watchMobile={1}
+        watchTablet={3}
+        watchDesktop={4}
+        wSkills={"w-full"}
+      />
       <button className=" bg-sky-600 rounded-3xl p-2 w-60 sm:w-72 text-white hover:bg-sky-800 font-semibold mb-20">
         Separe su cita
       </button>
+      <div className=" bg-cyan-500 w-full h-auto sm:h-36 flex flex-col items-center sm:flex-row sm:justify-around sm:items-center">
+        <div>
+          <h4 className=" text-white text-3xl sm:text-4xl font-bold pb-3 pt-5 text-center sm:text-left">QUIERES DIENTES RECTOS?</h4>
+          <p className=" text-white text-xl text-center">
+            Adultos o Niños tenemos el tratamiento de Ortodoncia adecuado para
+            ti.
+          </p>
+        </div>
+        <button className=" bg-white rounded-3xl text-xl mt-8 mb-5 w-60 h-14 sm:w-60 text-sky-600 hover:bg-sky-800 hover:text-white font-semibold shadow-slate-500 shadow-md">
+          Separe su cita ahora
+        </button>
+      </div>
     </section>
   );
 };

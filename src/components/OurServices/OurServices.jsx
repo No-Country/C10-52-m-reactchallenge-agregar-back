@@ -5,27 +5,27 @@ const OurServices = () => {
   const ourServices = [
     {
       img: "./images/ourServices/Fillings.svg",
-      nameService: "Fillings",
+      nameService: "Rellenos",
     },
     {
       img: "./images/ourServices/braces.svg",
-      nameService: "braces",
+      nameService: "Aparatos",
     },
     {
       img: "./images/ourServices/dentures.svg",
-      nameService: "Dentures",
+      nameService: "Prótesis",
     },
     {
       img: "./images/ourServices/dentalCrown.svg",
-      nameService: "Dental crown",
+      nameService: "Corona dental",
     },
     {
       img: "./images/ourServices/rct.svg",
-      nameService: "RCT",
+      nameService: "Tratamiento de conducto",
     },
     {
       img: "./images/ourServices/dentalImplants.svg",
-      nameService: "Implants",
+      nameService: "Implantes",
     }
   ]
 
@@ -38,7 +38,7 @@ const OurServices = () => {
         Conoce todas nuestras especialidades
       </p>
       <div className=" mt-20">
-        <CarouselC ourServices={ourServices} />
+        <CarouselC ourServices={ourServices} watchMobile={2} watchTablet={4} watchDesktop={6} wSkills={'w-10/12'} />
       </div>
       <div className=" flex justify-center mt-14 sm:mt-28">
         <button className=" bg-sky-600 rounded-3xl p-2 w-60 sm:w-72 text-white hover:bg-sky-800 font-semibold">

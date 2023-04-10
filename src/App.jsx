@@ -1,7 +1,7 @@
 import './App.css'
-import Footer from './components/Footer'
-import Header from './components/Navbar/Header'
-import Navbar from './components/Navbar/Navbar'
+import Footer from './components/Footer/Footer';
+import Header from './components/header/Header';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
 
@@ -14,4 +14,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

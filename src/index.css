@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-#fondo:before {
+/* #fondo:before {
 	content:'';
 	position: absolute;
 	width: 100%;
@@ -18,4 +18,4 @@
 	
 	color: #fff;
 	position: relative
-}
+} */

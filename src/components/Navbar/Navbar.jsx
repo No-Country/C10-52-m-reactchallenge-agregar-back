@@ -1,81 +1,98 @@
 import React, { useState } from 'react';
+import { Link } from "react-scroll";
 
-function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(false);
+const Navbar = () => {
+  const [menuMobile, setMenuMobile] = useState(false)
+  const openNavMobile = () => {
+    setMenuMobile(!menuMobile)
+  };
 
   return (
-    <>
-      {/* Botón del menú hamburguesa */}
-      <button
-        type="button"
-        className="block md:hidden text-blue-sky focus:outline-none"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {/* Icono de hamburguesa */}
-        <svg
-          className="h-6 w-6 fill-current"
-          viewBox="0 0 24 24"
-          xmlns="https://www.w3.org/2000/svg"
-        >
-          <path
-            className={`${isOpen ? 'hidden' : 'block'}`}
-            d="M4 6h16M4 12h16M4 18h16"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          {/* Icono de cierre */}
-          <path
-            className={`${isOpen ? 'block' : 'hidden'}`}
-            d="M6 18L18 6M6 6l12 12"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
-      
-      {/* Contenido del menú hamburguesa */}
-      <div className={`${isOpen ? 'block' : 'hidden'} md:hidden`}>
-        <ul className="bg-blue-blue text-white mt-2">
-          <li className="px-3 py-2 hover:bg-gray-700">Servicios</li>
-          <li className="px-3 py-2 hover:bg-gray-700">Contacto</li>
-          <li className="px-3 py-2 hover:bg-gray-700">Login</li>
-          <li className="px-3 py-2 hover:bg-gray-700">Register</li>
-        </ul>
-      </div>
-    </>
-  );
-}
-
-function Navbar() {
-  return (
-    <nav className="">
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
-            <a href="/" className="text-white text-2xl font-bold"><span className='text-blue-sky'>Citas</span> <span className='text-blue-blue'>Dental</span></a>
-          </div>
-          {/* Menú de navegación de escritorio */}
-          <div className="hidden md:block">
-            <ul className="flex items-center space-x-4">
-              <li><a href="#" className="text-black hover:text-white px-3 py-2 rounded-md text-sm font-medium">Servicios</a></li>
-              <li><a href="#" className="text-black hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contacto</a></li>
-              <li><a href="#" className="text-white hover:text-white px-3 py-2 rounded-md text-sm font-medium bg-blue-sky">Login</a></li>
-              <li><a href="#" className="text-white hover:text-white px-3 py-2 rounded-md text-sm font-medium bg-blue-blue">Register</a></li>
-            </ul>
-          </div>
-          {/* Menú hamburguesa para móviles */}
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:hidden">
-            <MobileMenu />
+    <header>
+      <div className="mx-auto w-full flex h-auto items-center justify-end p-3 sm:px-6 lg:px-8">
+        <div className="flex-shrink-0 flex items-center ">
+          <img src="./images/navBar_img/logoDentist.svg" alt="" />
+          <span className='text-blue-sky text-2xl sm:text-3xl font-bold ml-4 mr-3'>Citas</span> <span className='text-blue-blue text-2xl sm:text-3xl font-bold'>Dental</span>
+        </div>
+        <div className=" w-full">
+          <ul className=' flex justify-end items-center hidden sm:flex gap-10'>
+            <li>Servicios</li>
+            <li>Contacto</li>
+            <button className=" bg-blue-sky rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-300 hover:text-white font-semibold shadow-slate-500 shadow-md">
+              Login
+            </button>
+            <button className=" bg-blue-blue rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-800 hover:text-white font-semibold shadow-slate-500 shadow-md">
+            Registro
+            </button>
+            {/* <li>Login</li>
+            <li>Registro</li> */}
+          </ul>
+          <div className="flex items-center justify-end gap-4">
+            {
+              <button
+                onClick={openNavMobile}
+                className="block rounded bg-blue-sky p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden"
+              >
+                <span className="sr-only">Toggle menu</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+            }
           </div>
         </div>
       </div>
-    </nav>
+
+      <div className={`${menuMobile ? 'fixed bg-indigo-900 top-0 right-0 left-0 bottom-0' : 'hidden'}`}>
+        <div className="flex justify-end">
+          <p onClick={openNavMobile} className="text-white h-0 pr-5 pt-5 text-2xl">X</p>
+        </div>
+        <ul className="flex flex-col items-center justify-around h-full text-sm">
+          <li>
+            <Link
+              onClick={openNavMobile}
+              to="Services"
+              smooth={true}
+              className="text-gray-500 transition hover:text-white cursor-pointer font-bold text-4xl"
+            >
+              Servicios
+            </Link>
+          </li>
+          <li>
+            <Link
+              onClick={openNavMobile}
+              to="Proyects"
+              smooth={true}
+              className="text-gray-500 transition hover:text-white cursor-pointer font-bold text-4xl"
+            >
+              Registro
+            </Link>
+          </li>
+          <li>
+            <Link
+              onClick={openNavMobile}
+              to="Contact"
+              smooth={true}
+              className="text-gray-500 transition hover:text-white cursor-pointer font-bold text-4xl"
+            >
+              Login
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </header>
   );
-}
+};
 
 export default Navbar;

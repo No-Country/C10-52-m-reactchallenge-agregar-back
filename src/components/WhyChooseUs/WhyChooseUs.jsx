@@ -24,6 +24,10 @@ const WhyChooseUs = () => {
       info: "Separe su cita en el momento que usted tenga disponibilidad y gustosos le atenderemos",
     },
   ];
+
+  const openForm = () => {
+    
+  }
   return (
     <section className=" bg-gray-100 mt-20 flex flex-col items-center">
       <h2 className="text-5xl font-bold pt-20 pb-8 text-center">
@@ -51,7 +55,7 @@ const WhyChooseUs = () => {
             ti.
           </p>
         </div>
-        <button className=" bg-white rounded-3xl text-xl mt-8 mb-5 w-60 h-14 sm:w-60 text-sky-600 hover:bg-sky-800 hover:text-white font-semibold shadow-slate-500 shadow-md">
+        <button onClick={openForm} className=" bg-white rounded-3xl text-xl mt-8 mb-5 w-60 h-14 sm:w-60 text-sky-600 hover:bg-sky-800 hover:text-white font-semibold shadow-slate-500 shadow-md">
           Separe su cita ahora
         </button>
       </div>

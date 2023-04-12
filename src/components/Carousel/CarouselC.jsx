@@ -49,7 +49,7 @@ const CarouselC = ({ ourServices, ourSkills, watchMobile, watchTablet, watchDesk
 
   return (
     <Carousel
-      className={` m-auto my-14 ${wSkills}`}
+      className={` m-auto my-14 z-0 ${wSkills}`}
       responsive={responsive}
       infinite={true}
     >

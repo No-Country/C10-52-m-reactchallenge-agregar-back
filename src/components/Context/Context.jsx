@@ -1,12 +1,16 @@
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 
 const GlobalContext = createContext()
 
 const Context = ({ children }) => {
-    const nameAdmin = 'santiago ruiz'
+  const [openFormLogin, setOpenFormLogin] = useState(false)
+  /* const [openForms, setOpenForms] = useState(false) */
+  const [openRegister, setOpenRegister] = useState(false)
+
+    
 
   return (
-    <GlobalContext.Provider value={nameAdmin}>
+    <GlobalContext.Provider value={{openFormLogin, setOpenFormLogin, openRegister, setOpenRegister}}>
         {children}
     </GlobalContext.Provider>    
   )

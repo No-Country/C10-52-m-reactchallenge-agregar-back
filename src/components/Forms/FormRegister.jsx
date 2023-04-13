@@ -1,37 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../Context/Context";
 
 const FormRegister = () => {
+  const {openRegister, setOpenRegister} = useContext(GlobalContext)
+
+  const closeModal = () => {
+    setOpenRegister(!openRegister)
+  }
   return (
-    <form className="flex flex-col items-center justify-center gap-4 bg-sky-800 w-96 h-5/6 m-auto rounded-2xl right-0 top-0 bottom-0 left-0 fixed">
-      <p className=" text-white text-xl flex self-end mr-5 cursor-pointer">X</p>
+    <form className="flex flex-col items-center justify-center gap-4 bg-sky-800 sm:w-96 h-full sm:h-5/6 m-auto rounded-2xl right-0 top-0 bottom-0 left-0 fixed">
+      <p onClick={closeModal} className=" text-white text-xl self-end mt-20 sm:mt-0 mr-5 cursor-pointer hover:opacity-50 w-10  p-1 flex justify-center">X</p>
       <h5 className="text-2xl text-white">Regístrate</h5>
       <input
-        className=" w-8/12 rounded-lg p-1"
+        className=" w-8/12 rounded-lg p-1 shadow-black shadow-md"
         placeholder="Nombre"
         type="text"
       />
       <input
-        className=" w-8/12 rounded-lg p-1"
+        className=" w-8/12 rounded-lg p-1 shadow-black shadow-md"
         placeholder="Apellido"
         type="text"
       />
       <input
-        className=" w-8/12 rounded-lg p-1"
+        className=" w-8/12 rounded-lg p-1 shadow-black shadow-md"
         placeholder="Correo electronico"
         type="email"
       />
       <input
-        className=" w-8/12 rounded-lg p-1"
+        className=" w-8/12 rounded-lg p-1 shadow-black shadow-md"
         placeholder="Celular"
         type="text"
       />
       <input
-        className=" w-8/12 rounded-lg p-1"
+        className=" w-8/12 rounded-lg p-1 shadow-black shadow-md"
         placeholder="Contraseña"
         type="password"
       />
       <input
-        className=" w-8/12 rounded-lg p-1"
+        className=" w-8/12 rounded-lg p-1 shadow-black shadow-md"
         placeholder="Repetir contraseña"
         type="password"
       />

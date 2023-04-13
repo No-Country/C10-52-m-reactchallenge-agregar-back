@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext } from "react";
 import CarouselC from "../Carousel/CarouselC";
+import { GlobalContext } from "../Context/Context";
+import FormLogin from "../Forms/FormLogin";
 import FormRegister from "../Forms/FormRegister";
 
 
 const WhyChooseUs = () => {
-  const [openForms, setOpenForms] = useState(false)
+  const {openFormLogin, setOpenFormLogin, openRegister} = useContext(GlobalContext)
 
   
   const ourSkills = [
@@ -31,7 +33,7 @@ const WhyChooseUs = () => {
   ];
 
   const openForm = () => {
-    setOpenForms(true)
+    setOpenFormLogin(!openFormLogin)
   }
   return (
     <section className=" bg-gray-100 mt-20 flex flex-col items-center relative">
@@ -49,7 +51,7 @@ const WhyChooseUs = () => {
         watchDesktop={4}
         wSkills={"w-full"}
       />
-      <button className=" bg-sky-600 rounded-3xl p-2 w-60 sm:w-72 text-white hover:bg-sky-800 font-semibold mb-20">
+      <button onClick={openForm} className=" bg-sky-600 rounded-3xl p-2 w-60 sm:w-72 text-white hover:bg-sky-800 font-semibold mb-20">
         Separe su cita
       </button>
       <div className=" bg-cyan-500 w-full h-auto sm:h-36 flex flex-col items-center sm:flex-row sm:justify-around sm:items-center">
@@ -65,9 +67,9 @@ const WhyChooseUs = () => {
         </button>
       </div>
       {
-        openForms ? (
-          <FormRegister />
-        ) : null
+        openFormLogin ? (
+          <FormLogin />
+        ) : openRegister ? <FormRegister /> : null
       }
     </section>
   );

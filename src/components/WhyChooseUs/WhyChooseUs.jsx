@@ -1,7 +1,12 @@
-import React from "react";
+import { useState } from "react";
 import CarouselC from "../Carousel/CarouselC";
+import FormRegister from "../Forms/FormRegister";
+
 
 const WhyChooseUs = () => {
+  const [openForms, setOpenForms] = useState(false)
+
+  
   const ourSkills = [
     {
       image: "./images/whyChooseUs/heart.svg",
@@ -26,10 +31,10 @@ const WhyChooseUs = () => {
   ];
 
   const openForm = () => {
-    
+    setOpenForms(true)
   }
   return (
-    <section className=" bg-gray-100 mt-20 flex flex-col items-center">
+    <section className=" bg-gray-100 mt-20 flex flex-col items-center relative">
       <h2 className="text-5xl font-bold pt-20 pb-8 text-center">
         ¿Por que elegirnos?
       </h2>
@@ -59,6 +64,11 @@ const WhyChooseUs = () => {
           Separe su cita ahora
         </button>
       </div>
+      {
+        openForms ? (
+          <FormRegister />
+        ) : null
+      }
     </section>
   );
 };

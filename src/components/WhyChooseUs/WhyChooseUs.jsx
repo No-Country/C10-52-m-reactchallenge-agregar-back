@@ -1,7 +1,14 @@
-import React from "react";
+import { useContext } from "react";
 import CarouselC from "../Carousel/CarouselC";
+import { GlobalContext } from "../Context/Context";
+import FormLogin from "../Forms/FormLogin";
+import FormRegister from "../Forms/FormRegister";
+
 
 const WhyChooseUs = () => {
+  const {openFormLogin, setOpenFormLogin, openRegister} = useContext(GlobalContext)
+
+  
   const ourSkills = [
     {
       image: "./images/whyChooseUs/heart.svg",
@@ -24,8 +31,12 @@ const WhyChooseUs = () => {
       info: "Separe su cita en el momento que usted tenga disponibilidad y gustosos le atenderemos",
     },
   ];
+
+  const openForm = () => {
+    setOpenFormLogin(!openFormLogin)
+  }
   return (
-    <section className=" bg-gray-100 mt-20 flex flex-col items-center">
+    <section className=" bg-gray-100 mt-20 flex flex-col items-center relative">
       <h2 className="text-5xl font-bold pt-20 pb-8 text-center">
         ¿Por que elegirnos?
       </h2>
@@ -40,7 +51,7 @@ const WhyChooseUs = () => {
         watchDesktop={4}
         wSkills={"w-full"}
       />
-      <button className=" bg-sky-600 rounded-3xl p-2 w-60 sm:w-72 text-white hover:bg-sky-800 font-semibold mb-20">
+      <button onClick={openForm} className=" bg-sky-600 rounded-3xl p-2 w-60 sm:w-72 text-white hover:bg-sky-800 font-semibold mb-20">
         Separe su cita
       </button>
       <div className=" bg-cyan-500 w-full h-auto sm:h-36 flex flex-col items-center sm:flex-row sm:justify-around sm:items-center">
@@ -51,10 +62,15 @@ const WhyChooseUs = () => {
             ti.
           </p>
         </div>
-        <button className=" bg-white rounded-3xl text-xl mt-8 mb-5 w-60 h-14 sm:w-60 text-sky-600 hover:bg-sky-800 hover:text-white font-semibold shadow-slate-500 shadow-md">
+        <button onClick={openForm} className=" bg-white rounded-3xl text-xl mt-8 mb-5 w-60 h-14 sm:w-60 text-sky-600 hover:bg-sky-800 hover:text-white font-semibold shadow-slate-500 shadow-md">
           Separe su cita ahora
         </button>
       </div>
+      {
+        openFormLogin ? (
+          <FormLogin />
+        ) : openRegister ? <FormRegister /> : null
+      }
     </section>
   );
 };

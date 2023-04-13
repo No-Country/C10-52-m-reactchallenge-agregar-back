@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from "react-scroll";
+import { GlobalContext } from '../Context/Context';
 
 const Navbar = () => {
+  const {openFormLogin, setOpenFormLogin, openRegister, setOpenRegister} = useContext(GlobalContext)
   const [menuMobile, setMenuMobile] = useState(false)
   const openNavMobile = () => {
     setMenuMobile(!menuMobile)
   };
+
+  const openLogin = () => {
+    setOpenFormLogin(!openFormLogin)
+  }
+  const openReg = () => {
+    setOpenRegister(!openRegister)
+  }
 
   return (
     <header>
@@ -15,17 +24,15 @@ const Navbar = () => {
           <span className='text-blue-sky text-2xl sm:text-3xl font-bold ml-4 mr-3'>Citas</span> <span className='text-blue-blue text-2xl sm:text-3xl font-bold'>Dental</span>
         </div>
         <div className=" w-full">
-          <ul className=' flex justify-end items-center hidden sm:flex gap-10'>
+          <ul className=' justify-end items-center hidden sm:flex gap-10'>
             <li>Servicios</li>
             <li>Contacto</li>
-            <button className=" bg-blue-sky rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-300 hover:text-white font-semibold shadow-slate-500 shadow-md">
+            <button onClick={openLogin} className=" bg-blue-sky rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-300 hover:text-white font-semibold shadow-slate-500 shadow-md">
               Login
             </button>
-            <button className=" bg-blue-blue rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-800 hover:text-white font-semibold shadow-slate-500 shadow-md">
+            <button onClick={openReg} className=" bg-blue-blue rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-800 hover:text-white font-semibold shadow-slate-500 shadow-md">
             Registro
             </button>
-            {/* <li>Login</li>
-            <li>Registro</li> */}
           </ul>
           <div className="flex items-center justify-end gap-4">
             {

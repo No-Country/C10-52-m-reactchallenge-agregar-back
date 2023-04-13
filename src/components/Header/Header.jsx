@@ -1,9 +1,13 @@
-import React from "react";
 import '../../index.css'
-
-
+import React, { useContext } from "react";
+import { GlobalContext } from "../Context/Context";
 
 function Header() {
+
+  const {openFormLogin, setOpenFormLogin} = useContext(GlobalContext)
+  const openForm = () => {
+    setOpenFormLogin(!openFormLogin)
+  }
   return (
     <> 
     <div className="bg-[url(./images/header_img/f1.jpg)] bg-no-repeat bg-center bg-cover mx-auto flex flex-col md:flex-row lg:justify-end py-4 px-5 bg-opacity-100" id="fondo"
@@ -12,6 +16,7 @@ function Header() {
             <h1 className="text-5xl font-bold text-white pb-7">Para Sonrisas <br />Saludables</h1>
             <h2 className="text-xl text-white pb-7">Odontología General y Estética Integral</h2>
             <button
+                onClick={openForm}
                 className="bg-blue-blue hover:bg-blue-sky text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:shadow-outline text-lg"
                     type="button">
                     Requiero una Cita

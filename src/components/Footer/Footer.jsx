@@ -7,7 +7,7 @@ import { BiMessageDots } from 'react-icons/bi'
 function Footer() {
   return (
     <>
-    <footer className="bg-blue-sky text-white">
+    <footer id="contact" className="bg-blue-sky text-white">
       <div className="container mx-auto flex flex-col items-center md:flex-row justify-around py-4 px-5">
         <div className="mb-4 md:mb-0 flex flex-col items-center">
           <div className=""><img src="./images/footer_img/MapPinLine.svg" className="" alt="" /></div>

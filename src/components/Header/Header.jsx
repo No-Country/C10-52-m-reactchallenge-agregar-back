@@ -60,28 +60,13 @@ function Header() {
           from_name: formRef.current.from_name.value,
           message: formRef.current.message.value,
           user_id: formRef.current.user_id.value,
-<<<<<<< HEAD
-=======
           phoneNumber: formRef.current.phoneNumber.value
->>>>>>> 9ae4c1ebf3c5d341a66720d0eda3602cb1e3281e
         },
         "yNLc2Kbwkbsvics7M"
       )
       .then((resp) => {
-<<<<<<< HEAD
-        /* habia un setTimeOut de 3s */
-        /*    setTimeout(() => { */
-        /* formRef.current.from_name.value = "";
-        formRef.current.message.value = "";
-        formRef.current.user_id.value = ""; */
         btnSubmit.current.value = "Enviar e-mail";
         setAlertEmail(true);
-        /*       }, 1000); */
-
-=======
-        btnSubmit.current.value = "Enviar e-mail";
-        setAlertEmail(true);
->>>>>>> 9ae4c1ebf3c5d341a66720d0eda3602cb1e3281e
         console.log(resp);
       })
       .catch((err) => {
@@ -116,52 +101,6 @@ function Header() {
           <h3 className="text-white pt-4">O llamar al 51-990-645-017</h3>
         </div>
         <div className="mx-auto mt-10 w-6/12 hidden sm:flex sm:flex-col sm:items-center">
-<<<<<<< HEAD
-          {/* <h2 className="text-3xl font-bold mb-4 text-black">
-            Deja un mensaje
-          </h2>
-          <h5 className="text-gray-400 pb-3">
-            Nos pondremos en contacto con usted para analizar sus necesidades
-            dentales
-          </h5> */}
-          {/* <Formik
-            initialValues={{
-              name: "",
-              email: "",
-              phoneNumber: "",
-              message: "",
-            }}
-          >
-            <Form className="bg-white shadow-md rounded-3xl pt-6 pb-8 mb-4 w-6/12 px-5">
-              <Field
-                className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
-                type="text"
-                name="name"
-              />
-              <img src="./images/header_img/User.svg" className="absolute pr-2 pt-2" alt="" />
-              <ErrorMessage name="name" />
-              <Field
-                className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
-                type="email"
-                name="email"
-              />
-              <ErrorMessage name="email" />
-              <Field
-                className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
-                type="text"
-                name="phoneNumber"
-              />
-              <ErrorMessage name="phoneNumber" />
-              <Field
-                className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
-                type="text"
-                name="message"
-              />
-              <ErrorMessage name="message" />
-            </Form>
-          </Formik> */}
-=======
->>>>>>> 9ae4c1ebf3c5d341a66720d0eda3602cb1e3281e
           <Formik
             initialValues={{
               from_name: "",
@@ -174,11 +113,7 @@ function Header() {
           >
             <Form
               ref={formRef}
-<<<<<<< HEAD
-              className="bg-white shadow-md rounded-3xl pt-6 pb-8 mb-4 w-6/12 px-5"
-=======
               className="bg-white shadow-md rounded-3xl pt-6 pb-8 mb-4 w-6/12 sm:w-10/12 lg:w-7/12 px-5"
->>>>>>> 9ae4c1ebf3c5d341a66720d0eda3602cb1e3281e
             >
               <h2 className="text-3xl font-bold mb-4 text-black">
                 Deja un mensaje
@@ -188,16 +123,6 @@ function Header() {
                 necesidades dentales
               </h5>
               <div className="mb-4 flex flex-col items-end relative ">
-<<<<<<< HEAD
-                {/* <input
-                  className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Tu nombre"
-                /> */}
-=======
->>>>>>> 9ae4c1ebf3c5d341a66720d0eda3602cb1e3281e
                 <Field
                   className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
                   type="text"
@@ -212,16 +137,6 @@ function Header() {
                 <ErrorMessage name="from_name" />
               </div>
               <div className="mb-4 flex flex-col items-end relative  ">
-<<<<<<< HEAD
-                {/* <input
-                  className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
-                  id="email"
-                  type="email"
-                  name="email"
-                  placeholder="Correo"
-                /> */}
-=======
->>>>>>> 9ae4c1ebf3c5d341a66720d0eda3602cb1e3281e
                 <Field
                   className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
                   type="email"
@@ -236,16 +151,6 @@ function Header() {
                 <ErrorMessage className="" name="user_id" />
               </div>
               <div className="mb-4 flex flex-col items-end relative">
-<<<<<<< HEAD
-                {/* <input
-                  className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
-                  id="name"
-                  type="number"
-                  name="phoneNumber"
-                  placeholder="Número celular"
-                /> */}
-=======
->>>>>>> 9ae4c1ebf3c5d341a66720d0eda3602cb1e3281e
                 <Field
                   className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
                   type="number"
@@ -260,15 +165,6 @@ function Header() {
                 <ErrorMessage className="" name="phoneNumber" />
               </div>
               <div className="mb-6 flex flex-col items-end relative">
-<<<<<<< HEAD
-                {/* <textarea
-                  className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
-                  id="message"
-                  name="message"
-                  placeholder="Deja tu Mensaje"
-                ></textarea> */}
-=======
->>>>>>> 9ae4c1ebf3c5d341a66720d0eda3602cb1e3281e
                 <Field
                   className="shadow appearance-none border rounded-2xl w-full h-24 p-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100 resize-none"
                   type="text"
@@ -284,15 +180,6 @@ function Header() {
                 <ErrorMessage className="" name="message" />
               </div>
               <div className="flex items-center justify-between">
-<<<<<<< HEAD
-                {/* <button
-                  className="bg-blue-blue hover:bg-blue-sky text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline text-xl "
-                  type="button"
-                >
-                  Enviar
-                </button> */}
-=======
->>>>>>> 9ae4c1ebf3c5d341a66720d0eda3602cb1e3281e
                 <input
                   ref={btnSubmit}
                   onClick={sendEmail}
@@ -318,10 +205,8 @@ function Header() {
                     formRef.current.from_name.value = "";
                     formRef.current.message.value = "";
                     formRef.current.user_id.value = "";
-<<<<<<< HEAD
-=======
                     formRef.current.phoneNumber.value = "";
->>>>>>> 9ae4c1ebf3c5d341a66720d0eda3602cb1e3281e
+
                   }, 3000);
                 }, [alertEmail])}
               </div>

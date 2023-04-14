@@ -206,6 +206,7 @@ function Header() {
                     formRef.current.message.value = "";
                     formRef.current.user_id.value = "";
                     formRef.current.phoneNumber.value = "";
+
                   }, 3000);
                 }, [alertEmail])}
               </div>

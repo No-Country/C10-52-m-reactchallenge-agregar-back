@@ -36,7 +36,7 @@ const OurServices = () => {
   }
 
   return (
-    <section>
+    <section id="services">
       <h1 className=" text-center text-5xl font-bold mt-8">
         Nuestros servicios
       </h1>
@@ -44,7 +44,7 @@ const OurServices = () => {
         Conoce todas nuestras especialidades
       </p>
       <div className=" mt-20">
-        <CarouselC ourServices={ourServices} watchMobile={2} watchTablet={4} watchDesktop={6} wSkills={'w-10/12'} />
+        <CarouselC ourServices={ourServices} watchMobile={1} watchTablet={4} watchDesktop={6} wSkills={'w-10/12'} />
       </div>
       <div className=" flex justify-center mt-14 sm:mt-28">
         <button onClick={openForm} className=" bg-sky-600 rounded-3xl p-2 w-60 sm:w-72 text-white hover:bg-sky-800 font-semibold">

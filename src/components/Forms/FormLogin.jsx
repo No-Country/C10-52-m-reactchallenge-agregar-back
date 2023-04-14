@@ -13,16 +13,16 @@ const {setOpenFormLogin, setOpenRegister} = useContext(GlobalContext)
     setOpenFormLogin(false)
   }
   return (
-    <form className="flex flex-col items-center justify-center gap-5 bg-sky-800 sm:w-96 h-4/6 m-auto rounded-2xl fixed top-0 right-0 left-0 bottom-0 z-50">
+    <form className="flex flex-col items-center justify-center gap-5 bg-sky-800 sm:w-96 w-11/12 h-96 m-auto rounded-2xl fixed top-0 right-0 left-0 bottom-0 z-50">
        <p onClick={closeModal} className=" text-white text-xl self-end mr-5 cursor-pointer hover:opacity-50 w-10  p-1 flex justify-center">X</p>
       <h5 className="text-2xl text-white mb-3">Iniciar sesión</h5>
       <input
-        className=" w-8/12 rounded-lg p-1 shadow-black shadow-md"
+        className=" w-10/12 sm:w-8/12 rounded-lg p-1 shadow-black shadow-md"
         placeholder="Correo electrónico"
         type="email"
       />
       <input
-        className=" w-8/12 rounded-lg p-1 shadow-black shadow-md"
+        className=" w-10/12 sm:w-8/12 rounded-lg p-1 shadow-black shadow-md"
         placeholder="Contraseña"
         type="password"
       />

@@ -8,8 +8,8 @@ const FormRegister = () => {
     setOpenRegister(!openRegister)
   }
   return (
-    <form className="flex flex-col items-center justify-center gap-4 bg-sky-800 sm:w-96 h-full sm:h-5/6 m-auto rounded-2xl right-0 top-0 bottom-0 left-0 fixed">
-      <p onClick={closeModal} className=" text-white text-xl self-end mt-20 sm:mt-0 mr-5 cursor-pointer hover:opacity-50 w-10  p-1 flex justify-center">X</p>
+    <form className="flex flex-col items-center justify-center gap-4 bg-sky-800 sm:w-96 h-auto sm:h-5/6 m-auto rounded-2xl right-0 sm:top-0 bottom-0 left-0 fixed">
+      <p onClick={closeModal} className=" text-white text-xl self-end sm:mt-0 mr-5 cursor-pointer hover:opacity-50 w-10 p-2 flex justify-center">X</p>
       <h5 className="text-2xl text-white">Regístrate</h5>
       <input
         className=" w-8/12 rounded-lg p-1 shadow-black shadow-md"
@@ -23,7 +23,7 @@ const FormRegister = () => {
       />
       <input
         className=" w-8/12 rounded-lg p-1 shadow-black shadow-md"
-        placeholder="Correo electronico"
+        placeholder="Correo electrónico"
         type="email"
       />
       <input

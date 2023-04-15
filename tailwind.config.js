@@ -12,7 +12,10 @@ export default {
       },
       fontSize: {
         'w-form': '41rem'
-      }
+      },
+      backgroundImage: {
+        'gradient-form': 'linear-gradient(to right, #48CAE4, #0077B6)'
+      },
     },
   },
   plugins: [],

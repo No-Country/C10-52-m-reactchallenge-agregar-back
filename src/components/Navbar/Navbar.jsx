@@ -6,17 +6,26 @@ const Navbar = () => {
   const { openFormLogin, setOpenFormLogin, openRegister, setOpenRegister } =
     useContext(GlobalContext);
   const [menuMobile, setMenuMobile] = useState(false);
+
   const openNavMobile = () => {
-      setMenuMobile(!menuMobile);    
+    setMenuMobile(!menuMobile);
   };
 
-  const openLogin = () => {
-    setOpenFormLogin(!openFormLogin);
-    setMenuMobile(!menuMobile);
+  const openLogin = (typeForm) => {
+    if (typeForm === "login") {
+      setOpenFormLogin(!openFormLogin);
+    } else if (typeForm === "loginMobile") {
+      setOpenFormLogin(!openFormLogin);
+      setMenuMobile(!menuMobile);
+    }
   };
-  const openReg = () => {
-    setOpenRegister(!openRegister);
-    setMenuMobile(!menuMobile);
+  const openReg = (typeForm) => {
+    if (typeForm === "register") {
+      setOpenRegister(!openRegister);
+    } else if (typeForm === "registerMobile") {
+      setOpenRegister(!openRegister);
+      setMenuMobile(!menuMobile);
+    }
   };
 
   return (
@@ -26,7 +35,7 @@ const Navbar = () => {
           <img src="./images/navBar_img/logoDentist.svg" alt="" />
           <span className="text-blue-sky text-2xl sm:text-3xl font-bold ml-4 mr-2">
             Citas
-          </span>{" "}
+          </span>
           <span className="text-blue-blue text-2xl sm:text-3xl font-bold">
             Dental
           </span>
@@ -52,13 +61,13 @@ const Navbar = () => {
               </Link>
             </li>
             <button
-              onClick={openLogin}
+              onClick={() => openLogin("login")}
               className=" bg-blue-sky rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-300 hover:text-white font-semibold shadow-slate-500 shadow-md"
             >
               Login
             </button>
             <button
-              onClick={openReg}
+              onClick={() => openReg("register")}
               className=" bg-blue-blue rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-800 hover:text-white font-semibold shadow-slate-500 shadow-md"
             >
               Registro
@@ -94,7 +103,7 @@ const Navbar = () => {
       <div
         className={`${
           menuMobile
-            ? "fixed bg-blue-sky top-0 right-0 left-0 bottom-0"
+            ? "fixed bg-blue-sky z-50 top-0 right-0 left-0 bottom-0"
             : "hidden"
         }`}
       >
@@ -129,7 +138,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              onClick={openLogin}
+              onClick={() => openLogin("loginMobile")}
               to="Contact"
               smooth={true}
               className="text-gray-500 transition hover:text-white cursor-pointer font-bold text-4xl"
@@ -139,7 +148,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              onClick={openReg}
+              onClick={() => openReg("registerMobile")}
               to="Contact"
               smooth={true}
               className="text-gray-500 transition hover:text-white cursor-pointer font-bold text-4xl"

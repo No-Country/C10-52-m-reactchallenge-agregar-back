@@ -7,11 +7,12 @@ import emailjs from "@emailjs/browser";
 import AlertEmail from "../AlertEmail/AlertEmail";
 
 function Header() {
-  const { openFormLogin, setOpenFormLogin, alertEmail, setAlertEmail} = useContext(GlobalContext);
+  const { openFormLogin, setOpenFormLogin, alertEmail, setAlertEmail, openReservation, setOpenReservation} = useContext(GlobalContext);
   const formRef = useRef();
   const btnSubmit = useRef();
   const openForm = () => {
-    setOpenFormLogin(!openFormLogin);
+    /* setOpenFormLogin(!openFormLogin); */
+    setOpenReservation(!openReservation)
   };
   const validationForm = Yup.object({
     from_name: Yup.string().required(

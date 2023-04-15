@@ -1,5 +1,5 @@
 import "../../index.css";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { GlobalContext } from "../Context/Context";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -7,8 +7,7 @@ import emailjs from "@emailjs/browser";
 import AlertEmail from "../AlertEmail/AlertEmail";
 
 function Header() {
-  const [alertEmail, setAlertEmail] = useState(false);
-  const { openFormLogin, setOpenFormLogin } = useContext(GlobalContext);
+  const { openFormLogin, setOpenFormLogin, alertEmail, setAlertEmail} = useContext(GlobalContext);
   const formRef = useRef();
   const btnSubmit = useRef();
   const openForm = () => {
@@ -100,7 +99,7 @@ function Header() {
           </button>
           <h3 className="text-white pt-4">O llamar al 51-990-645-017</h3>
         </div>
-        <div className="mx-auto mt-10 w-6/12 hidden sm:flex sm:flex-col sm:items-center">
+        <div className="mx-auto mt-10 sm:w-6/12 sm:flex sm:flex-col sm:items-center">
           <Formik
             initialValues={{
               from_name: "",
@@ -113,7 +112,7 @@ function Header() {
           >
             <Form
               ref={formRef}
-              className="bg-white shadow-md rounded-3xl pt-6 pb-8 mb-4 w-6/12 sm:w-10/12 lg:w-7/12 px-5"
+              className="bg-white shadow-md rounded-3xl pt-6 pb-8 mb-4 w-full sm:w-10/12 lg:w-7/12 px-5"
             >
               <h2 className="text-3xl font-bold mb-4 text-black">
                 Deja un mensaje
@@ -124,7 +123,7 @@ function Header() {
               </h5>
               <div className="mb-4 flex flex-col items-end relative ">
                 <Field
-                  className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
+                  className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100 z-0"
                   type="text"
                   name="from_name"
                   placeholder="Nombre completo"
@@ -138,7 +137,7 @@ function Header() {
               </div>
               <div className="mb-4 flex flex-col items-end relative  ">
                 <Field
-                  className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
+                  className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100 z-0"
                   type="email"
                   name="user_id"
                   placeholder="Correo electrónico"
@@ -152,7 +151,7 @@ function Header() {
               </div>
               <div className="mb-4 flex flex-col items-end relative">
                 <Field
-                  className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
+                  className="shadow appearance-none border rounded-2xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100 z-0"
                   type="number"
                   name="phoneNumber"
                   placeholder="Número celular"
@@ -166,7 +165,7 @@ function Header() {
               </div>
               <div className="mb-6 flex flex-col items-end relative">
                 <Field
-                  className="shadow appearance-none border rounded-2xl w-full h-24 p-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100 resize-none"
+                  className="shadow appearance-none border rounded-2xl w-full h-24 p-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100 resize-none z-0"
                   type="text"
                   as="textarea"
                   name="message"
@@ -214,7 +213,7 @@ function Header() {
           </Formik>
         </div>
       </div>
-      <section className="">
+      <section>
         <div className="container mx-auto flex flex-col md:flex-row justify-around py-4 px-5">
           <div className="mb-4 md:mb-0 flex flex-col items-center">
             <div className="mb-4 md:mb-0 flex flex-col items-center">

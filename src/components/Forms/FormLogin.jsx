@@ -1,59 +1,99 @@
 import React, { useContext, useRef } from "react";
-import { GlobalContext, Context } from "../Context/Context";
-import exportLinks from "../../links/exportLinks";
+import { GlobalContext } from "../Context/Context";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-
+import * as Yup from "yup";
 
 const FormLogin = () => {
-    const {setOpenFormLogin, setOpenRegister} = useContext(GlobalContext);
-  const { linkLogin } = exportLinks();
-  const formRef = useRef()
+  const formRegister = useRef()
+  const btnSubmit = useRef()
+  const { setOpenFormLogin, setOpenRegister } =
+    useContext(GlobalContext);
 
   const openFormReg = () => {
-    setOpenFormLogin(false)
-    setOpenRegister(true)
-  }
-  
+    setOpenFormLogin(false);
+    setOpenRegister(true);
+  };
+
   const closeModal = () => {
-    setOpenFormLogin(false)
-  }
-  
-  const onLogin = async (value) => {
-    const response = await linkLogin(value)
-    
-    console.log(response);
-  }
+    setOpenFormLogin(false);
+  };
+
+  const validationForm = Yup.object({
+    email: Yup.string()
+      .email(
+        <p className="text-red-500 font-bold text-xl">
+          Formato de E-mail invalido
+        </p>
+      )
+      .required(<p className="text-red-500 font-bold text-xl">Ingresa tu mail</p>),
+    password: Yup.string().required(
+      <p className=" text-red-500 font-bold text-xl">Ingresa tu contraseña</p>
+    ),
+  });
+
+  const sendEmail = (value) => {
+    console.log(value);
+   /*  if (
+      formRegister.current.email.value == "" ||
+      formRegister.current.password.value == ""
+    ) {
+      return;
+    } */
+    /* btnSubmit.current.value = "Enviando"; */
+  };
   return (
     <Formik
-      initialValues = { {
+      initialValues={{
         email: "",
-        password: ""
+        password: "",
       }}
-      onSubmit={ onLogin }
+      onSubmit={sendEmail}
+      validationSchema={validationForm}
+    >
+      <Form
+        ref={formRegister}
+        className="flex flex-col items-center justify-center bg-gradient-form sm:w-96 w-11/12 h-96 m-auto rounded-2xl fixed top-0 right-0 left-0 bottom-0 z-50"
       >
-      
-      <Form 
-        ref = { formRef } className="flex flex-col items-center justify-center gap-5 bg-sky-800 sm:w-96 w-11/12 h-96 m-auto rounded-2xl fixed top-0 right-0 left-0 bottom-0 z-50">
-        <p onClick={closeModal} className=" text-white text-xl self-end mr-5 cursor-pointer hover:opacity-50 w-10  p-1 flex justify-center">X</p>
+        <p
+          onClick={closeModal}
+          className=" text-white text-xl self-end mr-5 cursor-pointer hover:opacity-50 w-10  p-1 flex justify-center"
+        >
+          X
+        </p>
         <h5 className="text-2xl text-white mb-3">Iniciar sesión</h5>
         <Field
-          className=" w-10/12 sm:w-8/12 rounded-lg p-1 shadow-black shadow-md"
-          placeholder="Correo electrónico"
+          className="w-10/12 sm:w-8/12 rounded-lg p-1 shadow-black shadow-md mt-4 mb-1"
           type="email"
-          name= "email"
+          name="email"
+          placeholder="Correo electrónico"
         />
+        <ErrorMessage name="email" />
         <Field
-          className=" w-10/12 sm:w-8/12 rounded-lg p-1 shadow-black shadow-md"
-          placeholder="Contraseña"
+          className="w-10/12 sm:w-8/12 rounded-lg p-1 shadow-black shadow-md mt-4 mb-1"
           type="password"
           name="password"
+          placeholder="Contraseña"
         />
-        <button className=" bg-sky-800 rounded-3xl p-2 mt-5 w-60 sm:w-72 text-white hover:bg-sky-600 font-semibold"
-        type="submit"
-        >
+        <ErrorMessage name="password" />
+        {/* <button className=" bg-sky-800 rounded-3xl p-2 mt-5 w-60 sm:w-72 text-white hover:bg-sky-600 font-semibold">
           Iniciar sesión
-        </button>
-        <p className=" text-white mb-5">Si no estas registrado <span onClick={openFormReg} className=" text-sky-300 underline cursor-pointer">Regístrate</span></p>
+        </button> */}
+        <input
+          ref={btnSubmit}
+          onClick={sendEmail}
+          type="submit"
+          className="bg-sky-800 rounded-3xl p-2 my-5 w-60 sm:w-72 text-white hover:bg-sky-600 font-semibold cursor-pointer"
+          value="Iniciar sesión"
+        />
+        <p className=" text-white mb-5">
+          Si no estas registrado{" "}
+          <span
+            onClick={openFormReg}
+            className=" text-sky-300 underline cursor-pointer"
+          >
+            Regístrate
+          </span>
+        </p>
       </Form>
     </Formik>
   );

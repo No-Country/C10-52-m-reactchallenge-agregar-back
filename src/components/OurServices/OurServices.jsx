@@ -1,8 +1,11 @@
 import { useContext } from "react";
 import CarouselC from "../Carousel/CarouselC";
 import { GlobalContext } from "../Context/Context";
+import Reservation from "../Reservation/Reservation";
 
 const OurServices = () => {
+
+  const {openReservation, setOpenReservation} = useContext(GlobalContext)
   const ourServices = [
     {
       img: "./images/ourServices/Fillings.svg",
@@ -32,7 +35,10 @@ const OurServices = () => {
 
   const {openFormLogin, setOpenFormLogin} = useContext(GlobalContext)
   const openForm = () => {
-    setOpenFormLogin(!openFormLogin)
+    /* setOpenFormLogin(!openFormLogin) */
+    /* Si el usuario inicio sesion, entonces al darle click a cualquier boton de agendar cita le va a desplegar el modal de reserva*/
+    setOpenReservation(!openReservation)
+
   }
 
   return (
@@ -51,6 +57,10 @@ const OurServices = () => {
           Agendar cita
         </button>
       </div>
+      {
+        openReservation ? <Reservation /> : null
+      }
+      
     </section>
   );
 };

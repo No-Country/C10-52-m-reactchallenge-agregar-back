@@ -6,7 +6,7 @@ import FormRegister from "../Forms/FormRegister";
 
 
 const WhyChooseUs = () => {
-  const {openFormLogin, setOpenFormLogin, openRegister} = useContext(GlobalContext)
+  const {openFormLogin, setOpenFormLogin, openRegister, openReservation, setOpenReservation} = useContext(GlobalContext)
 
   
   const ourSkills = [
@@ -33,10 +33,11 @@ const WhyChooseUs = () => {
   ];
 
   const openForm = () => {
-    setOpenFormLogin(!openFormLogin)
+    /* setOpenFormLogin(!openFormLogin) */
+    setOpenReservation(!openReservation)
   }
   return (
-    <section className=" bg-gray-100 mt-20 flex flex-col items-center relative">
+    <section className=" bg-gray-100 mt-20 flex flex-col items-center">
       <h2 className="text-5xl font-bold pt-20 pb-8 text-center">
         ¿Por que elegirnos?
       </h2>

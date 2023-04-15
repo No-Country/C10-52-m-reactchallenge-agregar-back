@@ -16,6 +16,12 @@ export default {
       backgroundImage: {
         'gradient-form': 'linear-gradient(to right, #48CAE4, #0077B6)'
       },
+      width: {
+        'w-modal-reservation': '98vw',
+      },
+      height: {
+        'h-modal-reservation': '98vh'
+      },
     },
   },
   plugins: [],

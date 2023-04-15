@@ -21,13 +21,13 @@ const FormLogin = () => {
   const validationForm = Yup.object({
     email: Yup.string()
       .email(
-        <p className="text-red-500 font-bold text-xl">
+        <p className="text-sky-800 font-bold text-xl">
           Formato de E-mail invalido
         </p>
       )
-      .required(<p className="text-red-500 font-bold text-xl">Ingresa tu mail</p>),
+      .required(<p className="text-sky-800 font-bold text-xl">Ingresa tu mail</p>),
     password: Yup.string().required(
-      <p className=" text-red-500 font-bold text-xl">Ingresa tu contraseña</p>
+      <p className=" text-sky-800 font-bold text-xl">Ingresa tu contraseña</p>
     ),
   });
 

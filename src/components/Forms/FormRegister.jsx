@@ -4,12 +4,13 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 const FormRegister = () => {
-  const {openRegister, setOpenRegister} = useContext(GlobalContext)
+  const {openRegister, setOpenRegister} = useContext(GlobalContext);
+  const { linkRegister } = exportLinks();
+  const formRef = useRef()
 
   const closeModal = () => {
     setOpenRegister(!openRegister)
   }
-
 
   const validationForm = Yup.object({
     name: Yup.string().required(
@@ -110,8 +111,6 @@ const FormRegister = () => {
 
       </Form>
     </Formik>
-
-    
   );
 };
 

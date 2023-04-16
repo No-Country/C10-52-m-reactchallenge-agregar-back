@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-scroll";
 import { GlobalContext } from "../Context/Context";
+import MainUser from "./MainUser";
 
 const Navbar = () => {
   const { openFormLogin, setOpenFormLogin, openRegister, setOpenRegister } =
@@ -60,7 +61,7 @@ const Navbar = () => {
                 Contacto
               </Link>
             </li>
-            <button
+            {/* <button
               onClick={() => openLogin("login")}
               className=" bg-blue-sky rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-300 hover:text-white font-semibold shadow-slate-500 shadow-md"
             >
@@ -71,7 +72,8 @@ const Navbar = () => {
               className=" bg-blue-blue rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-800 hover:text-white font-semibold shadow-slate-500 shadow-md"
             >
               Registro
-            </button>
+            </button> */}
+            <MainUser />
           </ul>
           <div className="flex items-center justify-end gap-4">
             {
@@ -156,6 +158,9 @@ const Navbar = () => {
               Registrarse
             </Link>
           </li>
+          {/* <li  className="text-gray-500 transition hover:text-white cursor-pointer font-bold text-4xl">
+              Cerrar sesión
+          </li> */}
         </ul>
       </div>
     </header>

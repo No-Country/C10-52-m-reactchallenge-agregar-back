@@ -10,8 +10,6 @@ const Context = ({ children }) => {
   const [openReservation, setOpenReservation] = useState(false);
 
 
-
-
   return (
     <GlobalContext.Provider value={{openFormLogin, setOpenFormLogin, openRegister, setOpenRegister, alertEmail, setAlertEmail, openReservation, setOpenReservation}}>
         {children}

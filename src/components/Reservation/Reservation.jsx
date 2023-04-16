@@ -29,6 +29,9 @@ const Reservation = () => {
           Dental
         </span>
       </h6>
+      <div className="mt-5 ">
+        
+      </div>
     </section>
   );
 };

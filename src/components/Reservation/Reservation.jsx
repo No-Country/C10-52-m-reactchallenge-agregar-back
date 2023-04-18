@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../Context/Context";
+import DatePickerRes from "../DatePicker/DatePicker";
 
 const Reservation = () => {
     const {openReservation, setOpenReservation} = useContext(GlobalContext)
@@ -29,7 +30,8 @@ const Reservation = () => {
           Dental
         </span>
       </h6>
-      <div className="mt-5 ">
+      <div className="mt-5 h-96 w-full flex flex-col items-center">
+        <DatePickerRes />
         
       </div>
     </section>

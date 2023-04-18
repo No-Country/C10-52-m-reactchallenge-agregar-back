@@ -35,7 +35,7 @@ const OurServices = () => {
 
   const {openFormLogin, setOpenFormLogin} = useContext(GlobalContext)
   const openForm = () => {
-    /* setOpenFormLogin(!openFormLogin) */
+    setOpenFormLogin(!openFormLogin)
     /* Si el usuario inicio sesion, entonces al darle click a cualquier boton de agendar cita le va a desplegar el modal de reserva*/
     setOpenReservation(!openReservation)
 

@@ -61,7 +61,7 @@ const Navbar = () => {
                 Contacto
               </Link>
             </li>
-            {/* <button
+            <button
               onClick={() => openLogin("login")}
               className=" bg-blue-sky rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-300 hover:text-white font-semibold shadow-slate-500 shadow-md"
             >
@@ -72,7 +72,7 @@ const Navbar = () => {
               className=" bg-blue-blue rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-800 hover:text-white font-semibold shadow-slate-500 shadow-md"
             >
               Registro
-            </button> */}
+            </button>
             <MainUser />
           </ul>
           <div className="flex items-center justify-end gap-4">

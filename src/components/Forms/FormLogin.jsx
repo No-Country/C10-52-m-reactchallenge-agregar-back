@@ -2,6 +2,7 @@ import React, { useContext, useRef } from "react";
 import { GlobalContext } from "../Context/Context";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import axios from 'axios'
 
 const FormLogin = () => {
   const formRegister = useRef()
@@ -31,8 +32,26 @@ const FormLogin = () => {
     ),
   });
 
-  const sendEmail = (value) => {
-    console.log(value);
+  const linkLogin = async(form) => {
+    let data 
+    await axios.post('https://dent-app-production.up.railway.app/login', form)
+    .then(params=> {
+      console.log('Estas dentro del sitio')
+      data = params.data
+      console.log(data)
+      return data
+    }
+      )
+    .catch(error=> console.log(error));
+}
+
+  const sendEmail = (values) => {
+    const {email, password} = values
+    const loginUser = {
+      "email": email,
+      "password": password,
+    }
+    linkLogin(loginUser)
    /*  if (
       formRegister.current.email.value == "" ||
       formRegister.current.password.value == ""

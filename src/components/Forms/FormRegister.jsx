@@ -50,7 +50,7 @@ const FormRegister = () => {
       "lastName": lastName,
       "email": email,
       "password": password,
-      "phoneNumber": String(phoneNumber)
+      "phoneNumber": phoneNumber
     };
     if (newUser.email && newUser.firstName) {
       const result = await linkRegister(newUser);

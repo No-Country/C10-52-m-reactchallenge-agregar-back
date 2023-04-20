@@ -3,6 +3,7 @@ import { GlobalContext } from "../Context/Context";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import exportLinks from "../../links/exportLinks";
+import Swal from 'sweetalert2'
 
 const { linkLogin } = exportLinks();
 
@@ -41,12 +42,25 @@ const FormLogin = () => {
       "email": email,
       "password": password,
     }
+  /*   const signUp = (user) => {
+      if(user) {
 
-    if (loginUser.email) {
+      }
+    } */
+
+    if (loginUser.email && loginUser.password) {
       const result = await linkLogin(loginUser);
-      result
-        ? closeModal()
-        : alert("Error Revise los parametros");
+      if(result) {
+        closeModal()
+        console.log(result);
+       /*  signUp() */
+      }else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'El usuario o contraseña no son correctos'
+        })
+      }
     }
     /*  if (
        formRegister.current.email.value == "" ||
@@ -59,13 +73,7 @@ const FormLogin = () => {
   return (
     <>
       <div
-        style={{
-          backgroundColor: 'rgb(0,0,0,0.6)',
-          height: '100vh',
-          width: '100vw',
-          position: 'fixed',
-          top: 0,
-        }}
+        className=" bg-black opacity-70 h-full w-full fixed top-0"
         onClick={() => closeModal()}
       />
       <Formik

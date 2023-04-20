@@ -4,6 +4,8 @@ import DatePickerRes from "../DatePicker/DatePicker";
 
 const Reservation = () => {
     const {openReservation, setOpenReservation} = useContext(GlobalContext)
+    const userSignUp = JSON.parse(localStorage.getItem("userDentApp"))
+
     const closeModalReservation = () => {
         setOpenReservation(!openReservation)
     }
@@ -18,7 +20,7 @@ const Reservation = () => {
       <span className="text-black text-2xl sm:text-3xl font-bold ml-4 mr-1">
           Bienvenido
         </span> <span className="text-blue-blue text-2xl sm:text-3xl font-bold ml-1 mr-2">
-          Santiago
+          {userSignUp.firstName.charAt(0).toUpperCase() + userSignUp.firstName.slice(1)}
         </span>
         <span className="text-black text-2xl sm:text-3xl font-bold ml-1 mr-2">
           a

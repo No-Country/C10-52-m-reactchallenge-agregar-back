@@ -11,8 +11,9 @@ function Header() {
   const formRef = useRef();
   const btnSubmit = useRef();
   const openForm = () => {
-    /* setOpenFormLogin(!openFormLogin); */
-    setOpenReservation(!openReservation)
+    const tokken = localStorage.getItem("tokenDentApp")
+    tokken ? setOpenReservation(!openReservation) : setOpenFormLogin(!openFormLogin)
+    
   };
   const validationForm = Yup.object({
     from_name: Yup.string().required(
@@ -77,7 +78,7 @@ function Header() {
   return (
     <>
       <div
-        className="bg-[url(./images/header_img/f1.jpg)] bg-no-repeat bg-center bg-cover mx-auto flex flex-col md:flex-row lg:justify-end py-4 px-5 bg-opacity-100"
+        className="bg-[url(./images/header_img/f1.jpeg)] bg-no-repeat bg-center bg-cover mx-auto flex flex-col md:flex-row lg:justify-end py-4 px-5 bg-opacity-100"
         id="fondo"
       >
         <div

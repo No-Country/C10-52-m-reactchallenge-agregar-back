@@ -33,8 +33,8 @@ const WhyChooseUs = () => {
   ];
 
   const openForm = () => {
-    /* setOpenFormLogin(!openFormLogin) */
-    setOpenReservation(!openReservation)
+    const tokken = localStorage.getItem("tokenDentApp")
+    tokken ? setOpenReservation(!openReservation) : setOpenFormLogin(!openFormLogin)  
   }
   return (
     <section className=" bg-gray-100 mt-20 flex flex-col items-center">

@@ -2,6 +2,9 @@ import React, { useContext, useRef } from "react";
 import { GlobalContext } from "../Context/Context";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import exportLinks from "../../links/exportLinks";
+
+const { linkLogin } = exportLinks();
 
 const FormLogin = () => {
   const formRegister = useRef()
@@ -31,71 +34,95 @@ const FormLogin = () => {
     ),
   });
 
-  const sendEmail = (value) => {
-    console.log(value);
-   /*  if (
-      formRegister.current.email.value == "" ||
-      formRegister.current.password.value == ""
-    ) {
-      return;
-    } */
+
+  const sendEmail = async (values) => {
+    const { email, password } = values
+    const loginUser = {
+      "email": email,
+      "password": password,
+    }
+
+    if (loginUser.email) {
+      const result = await linkLogin(loginUser);
+      result
+        ? closeModal()
+        : alert("Error Revise los parametros");
+    }
+    /*  if (
+       formRegister.current.email.value == "" ||
+       formRegister.current.password.value == ""
+     ) {
+       return;
+     } */
     /* btnSubmit.current.value = "Enviando"; */
   };
   return (
-    <Formik
-      initialValues={{
-        email: "",
-        password: "",
-      }}
-      onSubmit={sendEmail}
-      validationSchema={validationForm}
-    >
-      <Form
-        ref={formRegister}
-        className="flex flex-col items-center justify-center bg-gradient-form sm:w-96 w-11/12 h-96 m-auto rounded-2xl fixed top-0 right-0 left-0 bottom-0 z-50"
+    <>
+      <div
+        style={{
+          backgroundColor: 'rgb(0,0,0,0.6)',
+          height: '100vh',
+          width: '100vw',
+          position: 'fixed',
+          top: 0,
+        }}
+        onClick={() => closeModal()}
+      />
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+        }}
+        onSubmit={sendEmail}
+        validationSchema={validationForm}
       >
-        <p
-          onClick={closeModal}
-          className=" text-white text-xl self-end mr-5 cursor-pointer hover:opacity-50 w-10  p-1 flex justify-center"
+        <Form
+          ref={formRegister}
+          className="flex flex-col items-center justify-center bg-gradient-form sm:w-96 w-11/12 h-96 m-auto rounded-2xl fixed top-0 right-0 left-0 bottom-0 z-50"
         >
-          X
-        </p>
-        <h5 className="text-2xl text-white mb-3">Iniciar sesión</h5>
-        <Field
-          className="w-10/12 sm:w-8/12 rounded-lg p-1 shadow-black shadow-md mt-4 mb-1"
-          type="email"
-          name="email"
-          placeholder="Correo electrónico"
-        />
-        <ErrorMessage name="email" />
-        <Field
-          className="w-10/12 sm:w-8/12 rounded-lg p-1 shadow-black shadow-md mt-4 mb-1"
-          type="password"
-          name="password"
-          placeholder="Contraseña"
-        />
-        <ErrorMessage name="password" />
-        {/* <button className=" bg-sky-800 rounded-3xl p-2 mt-5 w-60 sm:w-72 text-white hover:bg-sky-600 font-semibold">
+          <p
+            onClick={closeModal}
+            className=" text-white text-xl self-end mr-5 cursor-pointer hover:opacity-50 w-10  p-1 flex justify-center"
+          >
+            X
+          </p>
+          <h5 className="text-2xl text-white mb-3">Iniciar sesión</h5>
+          <Field
+            className="w-10/12 sm:w-8/12 rounded-lg p-1 shadow-black shadow-md mt-4 mb-1"
+            type="email"
+            name="email"
+            placeholder="Correo electrónico"
+          />
+          <ErrorMessage name="email" />
+          <Field
+            className="w-10/12 sm:w-8/12 rounded-lg p-1 shadow-black shadow-md mt-4 mb-1"
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+          />
+          <ErrorMessage name="password" />
+          {/* <button className=" bg-sky-800 rounded-3xl p-2 mt-5 w-60 sm:w-72 text-white hover:bg-sky-600 font-semibold">
           Iniciar sesión
         </button> */}
-        <input
-          ref={btnSubmit}
-          onClick={sendEmail}
-          type="submit"
-          className="bg-sky-800 rounded-3xl p-2 my-5 w-60 sm:w-72 text-white hover:bg-sky-600 font-semibold cursor-pointer"
-          value="Iniciar sesión"
-        />
-        <p className=" text-white mb-5">
-          Si no estas registrado{" "}
-          <span
-            onClick={openFormReg}
-            className=" text-sky-300 underline cursor-pointer"
-          >
-            Regístrate
-          </span>
-        </p>
-      </Form>
-    </Formik>
+          <input
+            ref={btnSubmit}
+            onClick={sendEmail}
+            type="submit"
+            className="bg-sky-800 rounded-3xl p-2 my-5 w-60 sm:w-72 text-white hover:bg-sky-600 font-semibold cursor-pointer"
+            value="Iniciar sesión"
+          />
+          <p className=" text-white mb-5">
+            Si no estas registrado{" "}
+            <span
+              onClick={openFormReg}
+              className=" text-sky-300 underline cursor-pointer"
+            >
+              Regístrate
+            </span>
+          </p>
+        </Form>
+      </Formik>
+    </>
   );
 };
 

@@ -90,6 +90,7 @@ const FormRegister = () => {
         className=" bg-black opacity-70 h-full w-full fixed top-0"
         onClick={() => closeModal()}
       />
+      
       <Formik
         initialValues={{
           firstName: "",

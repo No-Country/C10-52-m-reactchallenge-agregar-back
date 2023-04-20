@@ -2,22 +2,13 @@ import React, { useContext, useRef } from "react";
 import { GlobalContext } from "../Context/Context";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from 'axios'
+import exportLinks from "../../links/exportLinks";
+
+const { linkRegister } = exportLinks();
 
 const FormRegister = () => {
   const { openRegister, setOpenRegister } = useContext(GlobalContext);
   const formRef = useRef()
-
-  const linkRegister = async(form) => {
-    let data
-    await axios.post('https://dent-app-production.up.railway.app/users', form)
-    .then(params => {
-      console.log('recibido')
-      data = params.data
-      return data
-      })
-    .catch(error => console.log(error))
-}
 
   const closeModal = () => {
     setOpenRegister(!openRegister);
@@ -51,8 +42,8 @@ const FormRegister = () => {
       .required(<p className=" text-sky-800 font-bold text-sm">Confirme la contraseña</p>),
   });
 
-  const sendEmail = (values) => {
-    const {firstName, lastName, email, phoneNumber, password} = values
+  const sendEmail = async (values) => {
+    const { firstName, lastName, email, phoneNumber, password } = values
     console.log(email);
     const newUser = {
       "firstName": firstName,
@@ -60,16 +51,20 @@ const FormRegister = () => {
       "email": email,
       "password": password,
       "phoneNumber": phoneNumber
+    };
+    if (newUser.email && newUser.firstName) {
+      const result = await linkRegister(newUser);
+      result && closeModal();
     }
-    linkRegister(newUser)
- /*  console.log(values); */
-   /*  linkRegister({
-      "firstName": "Gonzalo",
-      "lastName": "Gonzalo",
-      "email": "gonzalo@gmail.com",
-      "password": "123456",
-      "phoneNumber": "8878787787"
-  }) */
+
+    /*  console.log(values); */
+    /*  linkRegister({
+       "firstName": "Gonzalo",
+       "lastName": "Gonzalo",
+       "email": "gonzalo@gmail.com",
+       "password": "123456",
+       "phoneNumber": "8878787787"
+   }) */
   };
   return (
     <Formik

@@ -50,6 +50,7 @@ const FormRegister = () => {
       .oneOf([Yup.ref('password'), null], <p className=" text-sky-800 font-bold text-sm">Las contraseñas deben coincidir</p>)
       .required(<p className=" text-sky-800 font-bold text-sm">Confirme la contraseña</p>),
   });
+  
 
   const sendEmail = (values) => {
     const {firstName, lastName, email, phoneNumber, password} = values

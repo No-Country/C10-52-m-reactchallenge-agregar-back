@@ -59,6 +59,7 @@ const FormRegister = () => {
         </p>
       ),
   });
+  
 
   const sendEmail = async (values) => {
     const { firstName, lastName, email, phoneNumber, password } = values;

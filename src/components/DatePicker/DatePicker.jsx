@@ -101,6 +101,7 @@ const DatePickerRes = () => {
     init();
   }, []);
 
+
   useEffect(() => {
     const day = startDate.toLocaleDateString();
     const isDay = dates?.filter((item) => item.day === day);

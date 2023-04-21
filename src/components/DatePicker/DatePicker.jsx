@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import FadeLoader from "react-spinners/FadeLoader";
 import Swal from 'sweetalert2'
 import exportLinks from "../../links/exportLinks";
+import axios from "axios";
 
 const DatePickerRes = () => {
   const now = new Date();
@@ -75,7 +76,40 @@ const DatePickerRes = () => {
     return day !== 0 && day !== 6;
   };
 
+  const [excludeTimesDate, setExcludeTimesDate] = useState([]);
 
+  const [dates, setDates] = useState([]);
+
+  useEffect(() => {
+    const tokken = JSON.parse(localStorage.getItem('tokenDentApp'));
+    console.log(tokken);
+    let headers = {
+      Authorization: `Bearer ${tokken}`,
+    };
+    const init = async () => {
+      await axios
+        .get(
+          'https://dent-app-production.up.railway.app/appointments',
+          {
+            headers,
+          }
+        )
+        .then((res) => {
+          setDates(res.data);
+        });
+    };
+    init();
+  }, []);
+
+
+  useEffect(() => {
+    const day = startDate.toLocaleDateString();
+    const isDay = dates?.filter((item) => item.day === day);
+    const hours = isDay.map((item) =>
+      setHours(setMinutes(new Date(), 0), item.hour)
+    );
+    setExcludeTimesDate(hours);
+  }, [startDate, startTime]);
 
 
   return (
@@ -88,6 +122,8 @@ const DatePickerRes = () => {
           minDate={new Date()}
           maxDate={addMonths(new Date(), 1)}
           filterDate={isWeekday}
+
+
 
           // showDisabledMonthNavigation
           placeholderText="Elije una fecha"
@@ -108,6 +144,7 @@ const DatePickerRes = () => {
           maxTime={new Date().setHours(19, 0, 0)}
 
           excludeTimes={[
+            ...excludeTimesDate,
             setHours(setMinutes(new Date(), 0), 12),
             setHours(setMinutes(new Date(), 0), 13),
           ]}

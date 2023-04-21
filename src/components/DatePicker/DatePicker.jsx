@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FadeLoader from "react-spinners/FadeLoader";
 import Swal from 'sweetalert2'
+import exportLinks from "../../links/exportLinks";
 
 const DatePickerRes = () => {
   const now = new Date();
@@ -12,7 +13,7 @@ const DatePickerRes = () => {
   const [hiddenBtn, setHiddenBtn] = useState(false);
   const [alertConfirm, setAlertConfirm] = useState(false);
 
-
+  const { linkReservation } = exportLinks();
   const handleDate = (date) => {
     return setStartDate(date);
   };
@@ -33,7 +34,7 @@ const DatePickerRes = () => {
       /* text: 'Te veo pronto!', */
     })
   }
-  const setTime = () => {
+ /*  const setTime = () => {
     useEffect(() => {
       setTimeout(() => {
         setLoading(!loading);
@@ -41,22 +42,23 @@ const DatePickerRes = () => {
     }, [])
     
     
-  }
+  } */
 
   const sendReservation = () => {
     setViewSelection(!viewSelection);
-    setLoading(!loading);
+    /* setLoading(!loading); */
     const reservationUser = {
       day: startDate.toLocaleDateString(),
-      hour: startTime.getHours(),
+      hour: startTime.getHours().toString(),
     };
-    console.log(reservationUser);
+   /*  console.log(reservationUser);
       setTimeout(() => {
         setLoading(false);
         setAlertConfirm(true)
       }, 3000)
  
-    return reservationUser;
+    return reservationUser; */
+    linkReservation(reservationUser)
   };
 
   let [loading, setLoading] = useState(false);

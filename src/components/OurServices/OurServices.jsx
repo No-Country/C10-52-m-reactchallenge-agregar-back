@@ -35,10 +35,8 @@ const OurServices = () => {
 
   const {openFormLogin, setOpenFormLogin} = useContext(GlobalContext)
   const openForm = () => {
-    setOpenFormLogin(!openFormLogin)
-    /* Si el usuario inicio sesion, entonces al darle click a cualquier boton de agendar cita le va a desplegar el modal de reserva*/
-    setOpenReservation(!openReservation)
-
+    const tokken = localStorage.getItem("tokenDentApp")
+    tokken ? setOpenReservation(!openReservation) : setOpenFormLogin(!openFormLogin)  
   }
 
   return (

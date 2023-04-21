@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { addDays, addMonths, getDay, setHours, setMinutes } from 'date-fns';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FadeLoader from "react-spinners/FadeLoader";
@@ -8,7 +9,7 @@ import exportLinks from "../../links/exportLinks";
 const DatePickerRes = () => {
   const now = new Date();
   const [startDate, setStartDate] = useState(now);
-  const [startTime, setStartTime] = useState(now);
+  const [startTime, setStartTime] = useState(setHours(setMinutes(new Date(), 0), 9),);
   const [viewSelection, setViewSelection] = useState(false);
   const [hiddenBtn, setHiddenBtn] = useState(false);
   const [alertConfirm, setAlertConfirm] = useState(false);
@@ -34,15 +35,15 @@ const DatePickerRes = () => {
       /* text: 'Te veo pronto!', */
     })
   }
- /*  const setTime = () => {
-    useEffect(() => {
-      setTimeout(() => {
-        setLoading(!loading);
-      }, 3000)
-    }, [])
-    
-    
-  } */
+  /*  const setTime = () => {
+     useEffect(() => {
+       setTimeout(() => {
+         setLoading(!loading);
+       }, 3000)
+     }, [])
+     
+     
+   } */
 
   const sendReservation = () => {
     setViewSelection(!viewSelection);
@@ -51,13 +52,13 @@ const DatePickerRes = () => {
       day: startDate.toLocaleDateString(),
       hour: startTime.getHours().toString(),
     };
-   /*  console.log(reservationUser);
-      setTimeout(() => {
-        setLoading(false);
-        setAlertConfirm(true)
-      }, 3000)
- 
-    return reservationUser; */
+    /*  console.log(reservationUser);
+       setTimeout(() => {
+         setLoading(false);
+         setAlertConfirm(true)
+       }, 3000)
+  
+     return reservationUser; */
     linkReservation(reservationUser)
   };
 
@@ -69,7 +70,13 @@ const DatePickerRes = () => {
     borderColor: "red",
   };
 
-  
+  const isWeekday = (date) => {
+    const day = getDay(date);
+    return day !== 0 && day !== 6;
+  };
+
+
+
 
   return (
     <div className="flex flex-col items-center w-8/12 m-auto">
@@ -77,10 +84,15 @@ const DatePickerRes = () => {
         <DatePicker
           className=" w-full h-10 text-center rounded-xl"
           selected={startDate}
-          onChange={(date) => handleDate(date)}
+          onChange={handleDate}
+          minDate={new Date()}
+          maxDate={addMonths(new Date(), 1)}
+          filterDate={isWeekday}
+
+          // showDisabledMonthNavigation
           placeholderText="Elije una fecha"
           dateFormat="dd/MM/yyyy"
-          /* excludeDateIntervals={[{start: subDays(new Date(), 5), end: addDays(new Date(), 5) }]} */
+        /* excludeDateIntervals={[{start: subDays(new Date(), 5), end: addDays(new Date(), 5) }]} */
         />
       </div>
 
@@ -91,6 +103,15 @@ const DatePickerRes = () => {
           onChange={(date) => handleTime(date)}
           showTimeSelect
           showTimeSelectOnly
+
+          minTime={new Date().setHours(9, 0, 0)}
+          maxTime={new Date().setHours(19, 0, 0)}
+
+          excludeTimes={[
+            setHours(setMinutes(new Date(), 0), 12),
+            setHours(setMinutes(new Date(), 0), 13),
+          ]}
+
           timeIntervals={60}
           timeCaption="Time"
           dateFormat="h:mm aa"
@@ -105,9 +126,8 @@ const DatePickerRes = () => {
       </h1>
       <button
         onClick={() => viewCite()}
-        className={`bg-blue-blue hover:bg-blue-sky text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:shadow-outline text-lg ${
-          hiddenBtn ? "hidden" : null
-        }`}
+        className={`bg-blue-blue hover:bg-blue-sky text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:shadow-outline text-lg ${hiddenBtn ? "hidden" : null
+          }`}
         type="button"
       >
         Reservar cita
@@ -116,9 +136,8 @@ const DatePickerRes = () => {
         <div className="flex gap-x-5">
           <button
             /* onClick={() => viewCite("cancel")} */
-            className={`${
-              hiddenBtn ? null : "hidden"
-            } bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:shadow-outline text-lg`}
+            className={`${hiddenBtn ? null : "hidden"
+              } bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:shadow-outline text-lg`}
             type="button"
           >
             Cancelar
@@ -126,9 +145,8 @@ const DatePickerRes = () => {
 
           <button
             onClick={sendReservation}
-            className={`${
-              hiddenBtn ? null : "hidden"
-            } bg-green-700 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:shadow-outline text-lg`}
+            className={`${hiddenBtn ? null : "hidden"
+              } bg-green-700 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:shadow-outline text-lg`}
             type="submit"
           >
             Confirmar
@@ -178,15 +196,15 @@ export default DatePickerRes;
 
 /* Exclude date intervals */
 /* () => {
-	const [startDate, setStartDate] = useState(new Date());
-	return (
-	  <DatePicker
-		selected={startDate}
-		onChange={date => setStartDate(date)}
-		excludeDateIntervals={[{start: subDays(new Date(), 5), end: addDays(new Date(), 5) }]}
-		placeholderText="Select a date other than the interval from 5 days ago to 5 days in the future"
-	  />
-	);
+  const [startDate, setStartDate] = useState(new Date());
+  return (
+    <DatePicker
+    selected={startDate}
+    onChange={date => setStartDate(date)}
+    excludeDateIntervals={[{start: subDays(new Date(), 5), end: addDays(new Date(), 5) }]}
+    placeholderText="Select a date other than the interval from 5 days ago to 5 days in the future"
+    />
+  );
   }; */
 
 /* Filter dates */

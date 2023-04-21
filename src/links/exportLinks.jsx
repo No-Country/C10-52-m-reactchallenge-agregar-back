@@ -39,15 +39,18 @@ const exportLinks = () => {
       console.log(data);
     return data;
   }; */
+
+        
   const linkReservation = async (form) => {
-      const tokken = localStorage.getItem("tokenDentApp")
+    const tokken = JSON.parse(localStorage.getItem("tokenDentApp")) 
+    console.log(tokken);
     let headers = {
         "Authorization": `Bearer ${tokken}`
     }
     let data;
     await axios
       .post("https://dent-app-production.up.railway.app/appointments", form, {headers})
-      .then(async (params) => (data = params.data))
+      .then(async (params) => (data = await params.data))
       .catch((error) => console.log(error));
       console.log(data);
     return data;

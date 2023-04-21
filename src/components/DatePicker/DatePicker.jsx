@@ -49,7 +49,7 @@ const DatePickerRes = () => {
     /* setLoading(!loading); */
     const reservationUser = {
       day: startDate.toLocaleDateString(),
-      hour: startTime.getHours(),
+      hour: startTime.getHours().toString(),
     };
    /*  console.log(reservationUser);
       setTimeout(() => {
@@ -58,11 +58,7 @@ const DatePickerRes = () => {
       }, 3000)
  
     return reservationUser; */
-    console.log(reservationUser);
-    linkReservation({
-      "day": "22/4/2023",
-      "hour": "19"
-    })
+    linkReservation(reservationUser)
   };
 
   let [loading, setLoading] = useState(false);

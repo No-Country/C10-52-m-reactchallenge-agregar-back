@@ -1,11 +1,14 @@
 import axios from "axios";
 
 const exportLinks = () => {
+
   const linkLogin = async (form) => {
     let data;
     await axios
       .post("https://dent-app-production.up.railway.app/users/login", form)
-      .then(async (params) => (data = params.data))
+      .then(async (params) => {
+        data = params.data
+      })
       .catch((error) => console.log(error));
     if (data) {
       await localStorage.setItem("tokenDentApp", JSON.stringify(data.token));
@@ -27,19 +30,6 @@ const exportLinks = () => {
       .catch((error) => console.log(error));
     return data;
   };
-
-  /* const linkReservation = async (form) => {
-    let data;
-    await axios
-      .post("https://dent-app-production.up.railway.app/appointments", form)
-      .then(
-        async (params) => {data = await params.data}
-      )
-      .catch((error) => console.log(error));
-      console.log(data);
-    return data;
-  }; */
-
         
   const linkReservation = async (form) => {
     const tokken = JSON.parse(localStorage.getItem("tokenDentApp")) 

@@ -1,12 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-scroll";
 import { GlobalContext } from "../Context/Context";
 import MainUser from "./MainUser";
+import exportLinks from "../../links/exportLinks";
 
 const Navbar = () => {
-  const { openFormLogin, setOpenFormLogin, openRegister, setOpenRegister } =
+  const { openFormLogin, setOpenFormLogin, openRegister, setOpenRegister/* , toggleBtnNav  */} =
     useContext(GlobalContext);
   const [menuMobile, setMenuMobile] = useState(false);
+  const tokken = localStorage.getItem("tokenDentApp");  
 
   const openNavMobile = () => {
     setMenuMobile(!menuMobile);
@@ -28,6 +30,7 @@ const Navbar = () => {
       setMenuMobile(!menuMobile);
     }
   };
+
 
   return (
     <header>
@@ -61,7 +64,8 @@ const Navbar = () => {
                 Contacto
               </Link>
             </li>
-            <button
+            {
+              !tokken ? <><button
               onClick={() => openLogin("login")}
               className=" bg-blue-sky rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-300 hover:text-white font-semibold shadow-slate-500 shadow-md"
             >
@@ -72,7 +76,9 @@ const Navbar = () => {
               className=" bg-blue-blue rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-800 hover:text-white font-semibold shadow-slate-500 shadow-md"
             >
               Registro
-            </button>
+            </button></> : null
+            }
+            
             <MainUser />
           </ul>
           <div className="flex items-center justify-end gap-4">

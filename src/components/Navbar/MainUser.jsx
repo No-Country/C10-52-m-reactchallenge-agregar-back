@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { HiUser } from "react-icons/hi";
 import Cites from "../AdministratorView/Cites";
+import Swal from 'sweetalert2'
+import { useContext } from "react";
+import { GlobalContext } from "../Context/Context";
 
 const MainUser = () => {
   const [openMainUser, setOpenMainUser] = useState(false);
-  const [openCites, setOpenCites] = useState(false);
+  const { openCites, setOpenCites } = useContext(GlobalContext)
 
 
   const openMain = () => {
@@ -21,15 +24,11 @@ const MainUser = () => {
   };
   console.log(tokken);
   useEffect(() => {}, [openMainUser]);
- /*  const viewCites = () => {};
-  Swal.fire({
-    title: 'Sweet!',
-    text: 'Modal with a custom image.',
-    imageUrl: 'https://unsplash.it/400/200',
-    imageWidth: 400,
-    imageHeight: 200,
-    imageAlt: 'Custom image',
-  }) */
+  const viewCites = () => {
+    setOpenMainUser(!openMainUser);
+    setOpenCites(!openCites)
+  };
+  
   return (
     <>
       {tokken && (
@@ -68,22 +67,23 @@ const MainUser = () => {
           >
             <div className="p-2">
               <button
-                /* onClick={viewCites} */
+                onClick={viewCites}
                 className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-black hover:bg-sky-300"
-                role="menuitem"
               >
                 Ver citas
               </button>
               <button
                 onClick={closeSesion}
                 className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
-                role="menuitem"
               >
                 Cerrar sesión
               </button>
               
             </div>
           </div>
+          {
+            openCites ? <Cites /> : null
+          }
         </div>
       )}
     </>

@@ -55,8 +55,8 @@ function Header() {
     btnSubmit.current.value = "Enviando";
     emailjs
       .send(
-        "service_ggg0048",
-        "template_omljmxt",
+        "service_tkl1cci",
+        "template_djzfj1f",
         {
           from_name: formRef.current.from_name.value,
           message: formRef.current.message.value,

@@ -5,7 +5,7 @@ const exportLinks = () => {
   const linkLogin = async (form) => {
     let data;
     await axios
-      .post("https://dent-app-production.up.railway.app/users/login", form)
+      .post("https://dentist-app.onrender.com/users/login", form)
       .then(async (params) => {
         data = params.data
       })
@@ -19,7 +19,7 @@ const exportLinks = () => {
   const linkRegister = async (form) => {
     let data;
     await axios
-      .post("https://dent-app-production.up.railway.app/users", form)
+      .post("https://dentist-app.onrender.com/users", form)
       .then(
         async (params) =>
           (data = await linkLogin({
@@ -39,7 +39,7 @@ const exportLinks = () => {
     }
     let data;
     await axios
-      .post("https://dent-app-production.up.railway.app/appointments", form, {headers})
+      .post("https://dentist-app.onrender.com/appointments", form, {headers})
       .then(async (params) => (data = await params.data))
       .catch((error) => console.log(error));
       console.log(data);

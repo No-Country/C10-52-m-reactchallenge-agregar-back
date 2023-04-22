@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 import { useContext } from "react";
 import { GlobalContext } from "../Context/Context";
 
-const MainUser = () => {
+const MainUser = ({ setTokken }) => {
   const [openMainUser, setOpenMainUser] = useState(false);
   const { openCites, setOpenCites } = useContext(GlobalContext)
 
@@ -17,18 +17,19 @@ const MainUser = () => {
   const tokken = localStorage.getItem("tokenDentApp");
   const userSignUp = JSON.parse(localStorage.getItem("userDentApp"));
 
-  const closeSesion = () => {
-    localStorage.removeItem("tokenDentApp");
-    localStorage.removeItem("userDentApp");
+  const closeSesion = async () => {
+    await localStorage.removeItem("tokenDentApp");
+    await localStorage.removeItem("userDentApp");
+    setTokken(null);
     setOpenMainUser(!openMainUser);
   };
   console.log(tokken);
-  useEffect(() => {}, [openMainUser]);
+  useEffect(() => { }, [openMainUser]);
   const viewCites = () => {
     setOpenMainUser(!openMainUser);
     setOpenCites(!openCites)
   };
-  
+
   return (
     <>
       {tokken && (
@@ -60,9 +61,8 @@ const MainUser = () => {
           </button>
 
           <div
-            className={`${
-              openMainUser ? "null" : "hidden"
-            } absolute end-0 z-10 mt-2 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg`}
+            className={`${openMainUser ? "null" : "hidden"
+              } absolute end-0 z-10 mt-2 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg`}
             role="menu"
           >
             <div className="p-2">
@@ -78,7 +78,7 @@ const MainUser = () => {
               >
                 Cerrar sesión
               </button>
-              
+
             </div>
           </div>
           {

@@ -5,10 +5,16 @@ import MainUser from "./MainUser";
 import exportLinks from "../../links/exportLinks";
 
 const Navbar = () => {
-  const { openFormLogin, setOpenFormLogin, openRegister, setOpenRegister/* , toggleBtnNav  */} =
+  const { openFormLogin, setOpenFormLogin, openRegister, setOpenRegister/* , toggleBtnNav  */ } =
     useContext(GlobalContext);
   const [menuMobile, setMenuMobile] = useState(false);
-  const tokken = localStorage.getItem("tokenDentApp");  
+  // const tokken = localStorage.getItem("tokenDentApp");
+  const [tokken, setTokken] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("tokenDentApp");
+    setTokken(token);
+  }, [localStorage.getItem("tokenDentApp")]);
 
   const openNavMobile = () => {
     setMenuMobile(!menuMobile);
@@ -65,21 +71,24 @@ const Navbar = () => {
               </Link>
             </li>
             {
-              !tokken ? <><button
-              onClick={() => openLogin("login")}
-              className=" bg-blue-sky rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-300 hover:text-white font-semibold shadow-slate-500 shadow-md"
-            >
-              Login
-            </button>
-            <button
-              onClick={() => openReg("register")}
-              className=" bg-blue-blue rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-800 hover:text-white font-semibold shadow-slate-500 shadow-md"
-            >
-              Registro
-            </button></> : null
+              !tokken &&
+              <>
+                <button
+                  onClick={() => openLogin("login")}
+                  className=" bg-blue-sky rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-300 hover:text-white font-semibold shadow-slate-500 shadow-md"
+                >
+                  Login
+                </button>
+                <button
+                  onClick={() => openReg("register")}
+                  className=" bg-blue-blue rounded-3xl text-xl w-32 h-12 sm:w-36 text-white hover:bg-sky-800 hover:text-white font-semibold shadow-slate-500 shadow-md"
+                >
+                  Registro
+                </button>
+              </>
             }
-            
-            <MainUser />
+
+            <MainUser setTokken={setTokken} />
           </ul>
           <div className="flex items-center justify-end gap-4">
             {
@@ -109,11 +118,10 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`${
-          menuMobile
-            ? "fixed bg-blue-sky z-50 top-0 right-0 left-0 bottom-0"
-            : "hidden"
-        }`}
+        className={`${menuMobile
+          ? "fixed bg-blue-sky z-50 top-0 right-0 left-0 bottom-0"
+          : "hidden"
+          }`}
       >
         <div className="flex justify-end">
           <p
